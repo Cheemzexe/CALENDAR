@@ -22,3 +22,33 @@ def my_upd(l1,cal,window):
 	Date_chosen.value = datechoice
 	Date_chosen.disable()
 	window.destroy()
+	
+
+
+def date_btn2(): #this creates the date button to let the user to choose
+	
+	window1 = tk.Tk()
+
+	cal =Calendar(window1,selectmode = 'day')
+	cal.grid(row=1, column = 1, padx=20)
+	l11 = tk.Label(window1,bg='light blue')
+	l11.grid(row=1,column=2)
+
+	b11=tk.Button(window1,text='Select',command=lambda:my_upd2(l11,cal, window1)) #this allows the user to confirm the date chosen
+	b11.grid(row=2,column=1)
+	#DateEntry(window, locale='en_US', date_pattern='mm/dd/y').pack()  # custom formatting 
+	window1.mainloop()
+
+
+def my_upd2(l11,cal,window1):
+	global datechosen1
+	Date_chosen2.enable()
+	datechoice = ""
+	dt=cal.selection_get()
+	datechoice=cal.get_date()
+	#l1 = date
+	datechoice=dt.strftime("%d/%m/%Y")
+	Date_chosen2.value = datechoice
+	Date_chosen2.disable()
+	window1.destroy()
+
